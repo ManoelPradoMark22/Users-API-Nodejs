@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 
-import { IHeaderRequest } from "../../../interfaces/IHeaderRequest";
 import { TurnUserAdminUseCase } from "./TurnUserAdminUseCase";
 
 class TurnUserAdminController {
@@ -8,7 +7,7 @@ class TurnUserAdminController {
 
   handle(request: Request, response: Response): Response {
     try {
-      const { user_id } = request.headers as IHeaderRequest;
+      const { user_id } = request.params;
       const userUpdated = this.turnUserAdminUseCase.execute({ user_id });
 
       return response.json(userUpdated);
